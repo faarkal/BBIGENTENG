@@ -18,11 +18,12 @@
             <li>{{ Session::get('success') }}</li>
         @endif
 
-        <form action="{{ route('admin.login_submit') }}" method="POST">
+        <form action="{{ route('admin.reset_password_submit') }}" method="POST">
             @csrf
 
             <input type="hidden" name="token" value="{{ $token }}">
             <input type="hidden" name="email" value="{{ $email }}">
+            
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">New Password</label>
                 <input type="password" name="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
