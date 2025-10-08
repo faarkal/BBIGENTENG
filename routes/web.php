@@ -3,11 +3,14 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\GoogleAuth;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/google', [GoogleAuth::class, 'redirectGoogle'])->name('google.auth');
+Route::get('/google-callback', [GoogleAuth::class, 'handleGoogleCallback'])->name('google.login');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

@@ -1,92 +1,227 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BUPG - Balai Usaha Perikanan Genteng</title>
+    <meta name="description" content="Balai Usaha Perikanan Genteng" />
+    <meta name="keywords" content="Balai Usaha Perikanan Genteng" />
+    <meta name="author" content="Balai Usaha Perikanan Genteng" />
 
-    <head>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
 
-        <meta charset="utf-8" />
-        <title>Admin Dashboard</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-        <meta content="Themesbrand" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.ico') }}">
+    <style>
+        /* Kustom CSS tambahan */
+        .gtco-video a {
+            z-index: 1001;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -45px;
+            margin-left: -45px;
+            width: 90px;
+            height: 90px;
+            display: table;
+            text-align: center;
+            background: #fff;
+            box-shadow: 0px 14px 30px -15px rgba(0, 0, 0, 0.75);
+            border-radius: 50%;
+        }
 
-        <!-- plugin css -->
-        <link href="{{ asset('backend/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet" type="text/css" />
+        .gtco-video a i {
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 40px;
+        }
 
-        <!-- preloader css -->
-        <link rel="stylesheet" href="{{ asset('backend/assets/css/preloader.min.css') }}" type="text/css" />
+        .gtco-video .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            transition: 0.5s;
+        }
 
-        <!-- Bootstrap Css -->
-        <link href="{{ asset('backend/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-        <!-- Icons Css -->
-        <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-        <!-- App Css-->
-        <link href="{{ asset('backend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+        .gtco-video:hover .overlay {
+            background: rgba(0, 0, 0, 0.7);
+        }
 
-    </head>
+        .gtco-video:hover a {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
 
-    <body>
+<body class="font-sans">
+    <!-- Loader -->
+    <div class="gtco-loader"></div>
 
-    <!-- <body data-layout="horizontal"> -->
+    <div id="page">
+        <!-- Navigasi -->
+       <nav class="flex items-center justify-between flex-wrap p-6 absolute w-full z-50">
+    <div class="container mx-auto">
+        <div class="flex justify-between items-center">
+            <!-- Logo -->
+            <div class="w-1/6">
+                <div class="text-white text-2xl font-bold">
+                    <a href="{{ route('login') }}">BUPG</a>
+                </div>
+            </div>
 
-        <!-- Begin page -->
-        <div id="layout-wrapper">
+            <!-- Menu -->
+            <div class="w-5/6 text-right">
+                <ul class="flex justify-end space-x-8">
+                    <!-- Home -->
+                    <li><a href="{{ route('login') }}" class="text-white hover:text-gray-300">Home</a></li>
 
-            
-        @include('admin.body.header')
+                    <!-- Tentang (dropdown tanpa panah) -->
+                    <li class="relative group">
+                        <a href="#" class="text-white hover:text-gray-300">Tentang</a>
+                        <ul class="absolute left-1/2 transform -translate-x-1/2 hidden group-hover:block bg-white shadow-lg rounded-xl mt-3 py-3 text-center
+                                   opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-in-out
+                                   w-max min-w-[11rem]">
+                            <li><a href="{{ url('sejarah') }}" class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Sejarah</a></li>
+                            <li><a href="{{ url('visi-misi') }}" class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Visi dan Misi</a></li>
+                            <li><a href="{{ url('profil-balai') }}" class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Profil Balai</a></li>
+                        </ul>
+                    </li>
 
-            <!-- ========== Left Sidebar Start ========== -->
-        @include('admin.body.sidebar')
-            <!-- Left Sidebar End -->
+                    <!-- Pemesanan -->
+                    <li><a href="{{ route('login') }}" class="text-white hover:text-gray-300">Pemesanan</a></li>
 
-            
+                    <!-- Laporan (dropdown tanpa panah, auto-width + animasi) -->
+                    <li class="relative group">
+                        <a href="#" class="text-white hover:text-gray-300">Laporan</a>
+                        <ul class="absolute left-1/2 transform -translate-x-1/2 hidden group-hover:block bg-white shadow-lg rounded-xl mt-3 py-3 text-center
+                                   opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-in-out
+                                   w-max min-w-[12rem]">
+                            <li><a href="{{ route('login') }}" class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Laporan Bibit</a></li>
+                            <li><a href="{{ route('login') }}" class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Laporan Induk</a></li>
+                        </ul>
+                    </li>
 
-            <!-- ============================================================== -->
-            <!-- Start right Content here -->
-            <!-- ============================================================== -->
-    <div class="main-content">
-
-    @yield('admin')
-        <!-- End Page-content -->
-
-
-    @include('admin.body.footer')
-    </div>
-            <!-- end main content-->
-
+                    <!-- Login -->
+                    <li><a href="{{ route('login') }}" class="text-white hover:text-gray-300">Login</a></li>
+                </ul>
+            </div>
         </div>
-        <!-- END layout-wrapper -->
+    </div>
+</nav>
 
-        
-        <!-- Right Sidebar -->
-    @include('admin.body.rightside')
-        <!-- /Right-bar -->
+        <!-- Header -->
+        <header class="relative h-screen bg-cover bg-center bg-no-repeat" style="background-image: url(images/balai.jpg);">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="container mx-auto h-full flex items-center justify-center text-center relative z-10">
+                <div class="text-white">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-4">Balai Usaha Perikanan Genteng</h1>
+                </div>
+            </div>
+        </header>
 
-        <!-- Right bar overlay-->
-        <div class="rightbar-overlay"></div>
+        <!-- Features -->
+        <section id="gtco-features" class="py-20">
+            <div class="container mx-auto">
+                <div class="flex flex-wrap -mx-4">
+                    <!-- Pemesanan -->
+                    <div class="w-full md:w-1/3 px-4 mb-8">
+                        <div class="text-center p-8">
+                            <span class="icon w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fa-solid fa-cart-shopping text-blue-500 text-3xl"></i>
+                            </span>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Pemesanan</h3>
+                            <p class="text-gray-600 mb-6">Lakukan pemesanan benih dan induk ikan langsung melalui website kami, praktis tanpa harus datang ke balai.</p>
+                            <a href="{{ route('login') }}" class="inline-block px-6 py-3 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition">Pesan Sekarang</a>
+                        </div>
+                    </div>
 
-        <!-- JAVASCRIPT -->
-        <script src="{{ asset('backend/assets/libs/jquery/jquery.min.js') }}"></script>
-        <script src="{{ asset('backend/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('backend/assets/libs/metismenu/metisMenu.min.js') }}"></script>
-        <script src="{{ asset('backend/assets/libs/simplebar/simplebar.min.js') }}"></script>
-        <script src="{{ asset('backend/assets/libs/node-waves/waves.min.js') }}"></script>
-        <script src="{{ asset('backend/assets/libs/feather-icons/feather.min.js') }}"></script>
-        <!-- pace js -->
-        <script src="{{ asset('backend/assets/libs/pace-js/pace.min.js') }}"></script>
+                    <!-- Laporan -->
+                    <div class="w-full md:w-1/3 px-4 mb-8">
+                        <div class="text-center p-8">
+                            <span class="icon w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fa-solid fa-file-lines text-blue-500 text-3xl"></i>
+                            </span>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Laporan</h3>
+                            <p class="text-gray-600 mb-6">Lihat data laporan produksi dan penjualan ikan secara transparan dan terperinci di sini.</p>
+                            <a href="{{ route('login') }}" class="inline-block px-6 py-3 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition">Lihat</a>
+                        </div>
+                    </div>
 
-        <!-- apexcharts -->
-        <script src="{{ asset('backend/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+                    <!-- Tentang -->
+                    <div class="w-full md:w-1/3 px-4 mb-8">
+                        <div class="text-center p-8">
+                            <span class="icon w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fa-solid fa-circle-info text-blue-500 text-3xl"></i>
+                            </span>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Tentang</h3>
+                            <p class="text-gray-600 mb-6">Kenali lebih dekat Balai Usaha Perikanan Genteng melalui sejarah, visi-misi, serta profil kami di fitur Tentang.</p>
+                            <a href="{{ route('login') }}" class="inline-block px-6 py-3 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition">Info Lebih Lanjut</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <!-- Plugins js-->
-        <script src="{{ asset('backend/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
-        <script src="{{ asset('backend/assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js') }}"></script>
-        <!-- dashboard init -->
-        <script src="{{ asset('backend/assets/js/pages/dashboard.init.js') }}"></script>
+        <!-- Laporan Aktivitas -->
+        <section id="laporan-aktivitas" class="py-20 bg-gray-100">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Laporan Aktivitas</h2>
+                <p class="text-gray-600 mb-12">Laporan aktivitas Balai Usaha Perikanan Genteng</p>
 
-        <script src="{{ asset('backend/assets/js/app.js') }}"></script>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    @for ($i = 1; $i <= 3; $i++)
+                    <div class="relative rounded-2xl overflow-hidden group">
+                        <div class="h-64 bg-cover bg-center" style="background-image: url('images/img_1.jpg');"></div>
+                        <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-70 transition-all duration-500"></div>
+                        <a href="https://youtu.be/WwjUKHnWCTI?si=4hNH8UhsnnQUVmzZ" target="_blank"
+                           class="absolute inset-0 flex items-center justify-center text-white text-5xl transform transition-transform duration-300 group-hover:scale-125">
+                            <i class="fa-solid fa-play"></i>
+                        </a>
+                    </div>
+                    @endfor
+                </div>
+            </div>
+        </section>
 
-    </body>
+        <!-- Footer -->
+        <footer id="gtco-footer" class="bg-blue-900 text-white py-12 mt-20">
+            <div class="container mx-auto px-6 text-center">
+                <h4 class="text-2xl font-semibold mb-4">Lokasi Balai Usaha Perikanan Genteng (BBI Genteng)</h4>
+                <div class="relative pb-[56.25%] h-0 overflow-hidden rounded-lg shadow-lg">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.3552842112444!2d114.133!3d-8.216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd154ded9c821b9%3A0x8a8828d3568764d4!2sBalai%20Benih%20Ikan%20(BBI)%20Genteng!5e0!3m2!1sid!2sid!4v1699284425000!5m2!1sid!2sid"
+                        width="600" height="450" class="absolute top-0 left-0 w-full h-full border-0"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <p class="mt-4 text-gray-200">Jl. Temuguruh, Dusun Krajan, Genteng Wetan, Kabupaten Banyuwangi, Jawa Timur</p>
 
+                <div class="border-t border-gray-700 pt-6 mt-8 flex flex-col md:flex-row items-center justify-between text-center md:text-left">
+                    <p class="text-gray-300 text-sm">&copy; 2025 Balai Usaha Perikanan Genteng. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-white hover:text-blue-400"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white hover:text-blue-400"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-blue-400"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Inisialisasi AOS -->
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+        });
+    </script>
+</body>
 </html>

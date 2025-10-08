@@ -52,9 +52,8 @@
             </form>
             <div class="my-4 text-center text-gray-400">— or login with —</div>
             <div class="flex justify-center space-x-4">
-                <a href="#" class="bg-blue-600 text-white rounded-full p-3 hover:bg-blue-700 transition"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="bg-sky-400 text-white rounded-full p-3 hover:bg-sky-500 transition"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="bg-red-500 text-white rounded-full p-3 hover:bg-red-600 transition"><i class="fab fa-google"></i></a>
+
+                <a href="{{ route('google.auth') }}" class="bg-red-500 text-white rounded-full p-3 hover:bg-red-600 transition"><i class="fab fa-google"></i></a>
             </div>
         </div>
     </div>
