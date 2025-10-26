@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Mail\Websitemail;
 use App\Models\Admin;
 
@@ -62,7 +63,7 @@ class AdminController extends Controller
         $massage = "Click on the link to reset your password<br>";
         $massage .= "<a href='".$reset_link."'>Click Here</a>";
 
-        \Mail::to($request->email)->send(new Websitemail($subject, $massage));
+        Mail::to($request->email)->send(new Websitemail($subject, $massage));
         return redirect()->back()->with('success','We have e-mailed your password reset link!');
     }
 
