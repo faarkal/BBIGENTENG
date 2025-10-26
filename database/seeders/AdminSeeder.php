@@ -14,10 +14,17 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        $obj = new admin();
-        $obj->name = "Admin";
-        $obj->email = "BBIGenteng@gmail.com";
-        $obj->password = Hash::make("BBIGenteng123");
-        $obj->save();
+        $admin = Admin::where('email', 'BBIGenteng@gmail.com')->first();
+
+        if (!$admin) {
+            Admin::create([
+                'name' => 'Admin',
+                'email' => 'BBIGenteng@gmail.com',
+                'password' => Hash::make('BBIGenteng123'),
+            ]);
+            $this->command->info('✅ Admin user created successfully!');
+        } else {
+            $this->command->warn('⚠️ Admin with this email already exists, skipping...');
+        }
     }
 }

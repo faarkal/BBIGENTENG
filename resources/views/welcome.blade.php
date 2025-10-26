@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +14,8 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Google Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,600,400italic,700' rel='stylesheet'
+        type='text/css'>
 
     <style>
         /* Kustom CSS tambahan */
@@ -66,58 +68,73 @@
 
     <div id="page">
         <!-- Navigasi -->
-       <nav class="flex items-center justify-between flex-wrap p-6 absolute w-full z-50">
-    <div class="container mx-auto">
-        <div class="flex justify-between items-center">
-            <!-- Logo -->
-            <div class="w-1/6">
-                <div class="text-white text-2xl font-bold">
-                    <a href="{{ route('login') }}">BUPG</a>
-                </div>
-            </div>
+        <nav class="flex items-center justify-between flex-wrap p-6 absolute w-full z-50">
+            <div class="container mx-auto">
+                <div class="flex justify-between items-center">
+                    <!-- Logo -->
+                    <div class="w-1/6">
+                        <div class="text-white text-2xl font-bold">
+                            <a href="{{ url('/') }}">BUPG</a>
+                        </div>
+                    </div>
 
-            <!-- Menu -->
-            <div class="w-5/6 text-right">
-                <ul class="flex justify-end space-x-8">
-                    <!-- Home -->
-                    <li><a href="{{ route('login') }}" class="text-white hover:text-gray-300">Home</a></li>
+                    <!-- Menu -->
+                    <div class="w-5/6 text-right">
+                        <ul class="flex justify-end space-x-8">
+                            <!-- Home -->
+                            <li><a href="{{ url('/') }}" class="text-white hover:text-gray-300">Home</a></li>
 
-                    <!-- Tentang (dropdown tanpa panah) -->
-                    <li class="relative group">
-                        <a href="#" class="text-white hover:text-gray-300">Tentang</a>
-                        <ul class="absolute left-1/2 transform -translate-x-1/2 hidden group-hover:block bg-white shadow-lg rounded-xl mt-3 py-3 text-center
+                            <!-- Tentang (dropdown tanpa panah) -->
+                            <li class="relative group">
+                                <a href="#" class="text-white hover:text-gray-300">Tentang</a>
+                                <ul
+                                    class="absolute left-1/2 transform -translate-x-1/2 hidden group-hover:block bg-white shadow-lg rounded-xl mt-3 py-3 text-center
                                    opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-in-out
                                    w-max min-w-[11rem]">
-                            <li><a href="{{ url('sejarah') }}" class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Sejarah</a></li>
-                            <li><a href="{{ url('visi-misi') }}" class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Visi dan Misi</a></li>
-                            <li><a href="{{ url('profil-balai') }}" class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Profil Balai</a></li>
-                        </ul>
-                    </li>
+                                    <li><a href="{{ route('sejarah') }}"
+                                            class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Sejarah</a>
+                                    </li>
+                                    <li><a href="{{ url('visi-misi') }}"
+                                            class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Visi
+                                            dan Misi</a></li>
+                                    <li><a href="{{ url('profil-balai') }}"
+                                            class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Profil
+                                            Balai</a></li>
+                                </ul>
+                            </li>
 
-                    <!-- Pemesanan -->
-                    <li><a href="{{ route('login') }}" class="text-white hover:text-gray-300">Pemesanan</a></li>
+                            <!-- Pemesanan -->
+                            <li><a href="{{ route('pemesanan') }}" class="text-white hover:text-gray-300">Pemesanan</a>
+                            </li>
 
-                    <!-- Laporan (dropdown tanpa panah, auto-width + animasi) -->
-                    <li class="relative group">
-                        <a href="#" class="text-white hover:text-gray-300">Laporan</a>
-                        <ul class="absolute left-1/2 transform -translate-x-1/2 hidden group-hover:block bg-white shadow-lg rounded-xl mt-3 py-3 text-center
+                            <!-- Laporan (dropdown tanpa panah, auto-width + animasi) -->
+                            <li class="relative group">
+                                <a href="#" class="text-white hover:text-gray-300">Laporan</a>
+                                <ul
+                                    class="absolute left-1/2 transform -translate-x-1/2 hidden group-hover:block bg-white shadow-lg rounded-xl mt-3 py-3 text-center
                                    opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-in-out
                                    w-max min-w-[12rem]">
-                            <li><a href="{{ route('login') }}" class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Laporan Bibit</a></li>
-                            <li><a href="{{ route('login') }}" class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Laporan Induk</a></li>
-                        </ul>
-                    </li>
+                                    <li><a href="{{ route('login') }}"
+                                            class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Laporan
+                                            Benih Ikan</a></li>
+                                    <li><a href="{{ route('login') }}"
+                                            class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Laporan
+                                            Induk Ikan</a></li>
+                                </ul>
+                            </li>
 
-                    <!-- Login -->
-                    <li><a href="{{ route('login') }}" class="text-white hover:text-gray-300">Login</a></li>
-                </ul>
+                            <!-- Login -->
+                            <li><a href="{{ route('admin.login') }}" class="text-white hover:text-gray-300">Login</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</nav>
+        </nav>
 
         <!-- Header -->
-        <header class="relative h-screen bg-cover bg-center bg-no-repeat" style="background-image: url(images/balai.jpg);">
+        <header class="relative h-screen bg-cover bg-center bg-no-repeat"
+            style="background-image: url('{{ asset('backend/assets/images/balai.jpg') }}');">
             <div class="absolute inset-0 bg-black opacity-50"></div>
             <div class="container mx-auto h-full flex items-center justify-center text-center relative z-10">
                 <div class="text-white">
@@ -133,36 +150,47 @@
                     <!-- Pemesanan -->
                     <div class="w-full md:w-1/3 px-4 mb-8">
                         <div class="text-center p-8">
-                            <span class="icon w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <span
+                                class="icon w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
                                 <i class="fa-solid fa-cart-shopping text-blue-500 text-3xl"></i>
                             </span>
                             <h3 class="text-2xl font-bold text-gray-800 mb-4">Pemesanan</h3>
-                            <p class="text-gray-600 mb-6">Lakukan pemesanan benih dan induk ikan langsung melalui website kami, praktis tanpa harus datang ke balai.</p>
-                            <a href="{{ route('login') }}" class="inline-block px-6 py-3 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition">Pesan Sekarang</a>
+                            <p class="text-gray-600 mb-6">Lakukan pemesanan benih ikan langsung melalui
+                                website kami, praktis tanpa harus datang ke balai.</p>
+                            <a href="{{ route('pemesanan') }}"
+                                class="inline-block px-6 py-3 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition">Pesan
+                                Sekarang</a>
                         </div>
                     </div>
 
                     <!-- Laporan -->
                     <div class="w-full md:w-1/3 px-4 mb-8">
                         <div class="text-center p-8">
-                            <span class="icon w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <span
+                                class="icon w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
                                 <i class="fa-solid fa-file-lines text-blue-500 text-3xl"></i>
                             </span>
                             <h3 class="text-2xl font-bold text-gray-800 mb-4">Laporan</h3>
-                            <p class="text-gray-600 mb-6">Lihat data laporan produksi dan penjualan ikan secara transparan dan terperinci di sini.</p>
-                            <a href="{{ route('login') }}" class="inline-block px-6 py-3 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition">Lihat</a>
+                            <p class="text-gray-600 mb-6">Lihat data laporan produksi dan penjualan ikan secara
+                                transparan dan terperinci di sini.</p>
+                            <a href="{{ route('login') }}"
+                                class="inline-block px-6 py-3 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition">Lihat</a>
                         </div>
                     </div>
 
                     <!-- Tentang -->
                     <div class="w-full md:w-1/3 px-4 mb-8">
                         <div class="text-center p-8">
-                            <span class="icon w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <span
+                                class="icon w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
                                 <i class="fa-solid fa-circle-info text-blue-500 text-3xl"></i>
                             </span>
                             <h3 class="text-2xl font-bold text-gray-800 mb-4">Tentang</h3>
-                            <p class="text-gray-600 mb-6">Kenali lebih dekat Balai Usaha Perikanan Genteng melalui sejarah, visi-misi, serta profil kami di fitur Tentang.</p>
-                            <a href="{{ route('login') }}" class="inline-block px-6 py-3 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition">Info Lebih Lanjut</a>
+                            <p class="text-gray-600 mb-6">Kenali lebih dekat Balai Usaha Perikanan Genteng melalui
+                                sejarah, visi-misi, serta profil kami di fitur Tentang.</p>
+                            <a href="{{ route('sejarah') }}"
+                                class="inline-block px-6 py-3 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition">Info
+                                Lebih Lanjut</a>
                         </div>
                     </div>
                 </div>
@@ -177,14 +205,17 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     @for ($i = 1; $i <= 3; $i++)
-                    <div class="relative rounded-2xl overflow-hidden group">
-                        <div class="h-64 bg-cover bg-center" style="background-image: url('images/img_1.jpg');"></div>
-                        <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-70 transition-all duration-500"></div>
-                        <a href="https://youtu.be/WwjUKHnWCTI?si=4hNH8UhsnnQUVmzZ" target="_blank"
-                           class="absolute inset-0 flex items-center justify-center text-white text-5xl transform transition-transform duration-300 group-hover:scale-125">
-                            <i class="fa-solid fa-play"></i>
-                        </a>
-                    </div>
+                        <div class="relative rounded-2xl overflow-hidden group">
+                            <div class="h-64 bg-cover bg-center" style="background-image: url('images/img_1.jpg');">
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-70 transition-all duration-500">
+                            </div>
+                            <a href="https://youtu.be/WwjUKHnWCTI?si=4hNH8UhsnnQUVmzZ" target="_blank"
+                                class="absolute inset-0 flex items-center justify-center text-white text-5xl transform transition-transform duration-300 group-hover:scale-125">
+                                <i class="fa-solid fa-play"></i>
+                            </a>
+                        </div>
                     @endfor
                 </div>
             </div>
@@ -201,14 +232,20 @@
                         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
-                <p class="mt-4 text-gray-200">Jl. Temuguruh, Dusun Krajan, Genteng Wetan, Kabupaten Banyuwangi, Jawa Timur</p>
+                <p class="mt-4 text-gray-200">J5W7+H3H, Jl. Temuguruh, Dusun Krajan, Genteng Wetan, Banyuwangi,
+                    Kabupaten Banyuwangi, Jawa Timur 68465</p>
 
-                <div class="border-t border-gray-700 pt-6 mt-8 flex flex-col md:flex-row items-center justify-between text-center md:text-left">
-                    <p class="text-gray-300 text-sm">&copy; 2025 Balai Usaha Perikanan Genteng. All rights reserved.</p>
+                <div
+                    class="border-t border-gray-700 pt-6 mt-8 flex flex-col md:flex-row items-center justify-between text-center md:text-left">
+                    <p class="text-gray-300 text-sm">&copy; 2025 Balai Usaha Perikanan Genteng. All rights reserved.
+                    </p>
                     <div class="flex space-x-6 mt-4 md:mt-0">
-                        <a href="#" class="text-white hover:text-blue-400"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-white hover:text-blue-400"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-white hover:text-blue-400"><i class="fab fa-youtube"></i></a>
+                        <a href="https://id-id.facebook.com/KabupatenBanyuwangi"
+                            class="text-white hover:text-blue-400"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/disperikananbwi?igsh=M2VmbHZlNGowbmJk"
+                            class="text-white hover:text-blue-400"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@dinasperikanankabupatenban7311?si=6LJA04m9lYGJqc1c"
+                            class="text-white hover:text-blue-400"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -224,4 +261,5 @@
         });
     </script>
 </body>
+
 </html>
