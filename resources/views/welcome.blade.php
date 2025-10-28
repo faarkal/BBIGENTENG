@@ -109,7 +109,7 @@
                     </li>
 
                     <!-- Login -->
-                    <li><a href="{{ route('login') }}" class="text-white hover:text-gray-300">Login</a></li>
+                    <li><a href="{{ route('admin.login') }}" class="text-white hover:text-gray-300">Login</a></li>
                 </ul>
             </div>
         </div>
