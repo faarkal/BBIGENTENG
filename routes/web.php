@@ -18,6 +18,7 @@ use App\Http\Controllers\Publik\LaporanBenihController as PublikLaporanBenihCont
 use App\Http\Controllers\Admin\LaporanBenihController as AdminLaporanBenihController;
 use App\Http\Controllers\Publik\LaporanIndukController as PublikLaporanIndukController;
 use App\Http\Controllers\Admin\LaporanIndukController as AdminLaporanIndukController;
+use App\Http\Controllers\Admin\MonitoringController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,6 +87,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Pengelolaan Benih Ikan
         Route::resource('benih', BenihController::class);
 
+         // <-- Sisipkan monitoring di sini -->
+        Route::get('/monitoring', [MonitoringController::class, 'index'])->name('monitoring.index');
+        Route::get('/monitoring/create', [MonitoringController::class, 'create'])->name('monitoring.create');
+        Route::post('/monitoring', [MonitoringController::class, 'store'])->name('monitoring.store');
+        Route::get('/monitoring/{id}/monitoring', [MonitoringController::class, 'monitoring'])->name('monitoring.monitoring');
+        Route::put('/monitoring/{id}', [MonitoringController::class, 'update'])->name('monitoring.update');
+        Route::delete('/monitoring/{id}', [MonitoringController::class, 'destroy'])->name('monitoring.destroy');
         // Data Master Benih Ikan
         Route::resource('master-benih', MasterBenihController::class);
 

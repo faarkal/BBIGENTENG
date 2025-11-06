@@ -123,9 +123,9 @@
                                 </ul>
                             </li>
 
-                            <!-- Login -->
-                            <li><a href="{{ route('admin.login') }}" class="text-white hover:text-gray-300">Login</a>
-                            </li>
+                    <!-- Login -->
+                     <li><a href="{{ route('admin.login') }}" class="text-white hover:text-gray-300">Login</a></li>
+                </ul>
                         </ul>
                     </div>
                 </div>
