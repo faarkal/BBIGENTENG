@@ -123,18 +123,12 @@
                                 </ul>
                             </li>
 
-<<<<<<< HEAD
                     <!-- Login -->
-                    <li><a href="{{ route('admin.login') }}" class="text-white hover:text-gray-300">Login</a></li>
+                     <li><a href="{{ route('admin.login') }}" class="text-white hover:text-gray-300">Login</a></li>
                 </ul>
-=======
-                            <!-- Login -->
-                            <li><a href="{{ route('admin.login') }}" class="text-white hover:text-gray-300">Login</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
->>>>>>> ec731aeb16faf01450a46101af502cb461f8e9d1
             </div>
         </nav>
 

@@ -50,7 +50,7 @@
                         class="absolute left-1/2 transform -translate-x-1/2 hidden group-hover:block bg-white shadow-lg rounded-xl mt-3 py-3 text-center
                                    opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-in-out
                                    w-max min-w-[11rem]">
-                        <li><a href="{{ route('sejarah') }}"
+                        <li><a href="{{ route('admin.monitoring.create') }}"
                                 class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Monitoring</a>
                         </li>
                         <li><a href="{{ route('sejarah') }}"
@@ -70,11 +70,10 @@
         </div>
     </nav>
 
-<<<<<<< HEAD
                     <!-- Login -->
                     <li><a href="{{ route('admin.login') }}" class="text-white hover:text-gray-300">Logout</a></li>
                 </ul>
-=======
+
     <!-- Header Section -->
     <header class="relative h-screen bg-cover bg-center bg-no-repeat"
         style="background-image: url('{{ asset('backend/assets/images/balai.jpg') }}'); margin-top:64px;">
@@ -84,7 +83,6 @@
                 <h1 class="text-5xl md:text-7xl font-bold mb-4">Selamat Datang, Admin!</h1>
                 <p class="text-lg md:text-xl">Kelola data Balai Usaha Perikanan Genteng dengan mudah di dashboard ini.
                 </p>
->>>>>>> ec731aeb16faf01450a46101af502cb461f8e9d1
             </div>
         </div>
     </header>
