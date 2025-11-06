@@ -69,12 +69,22 @@
                     <a href="{{ route('admin.benih.index') }}" class="block px-4 py-2 hover:bg-blue-100 rounded">
                         Pengelolaan Benih Ikan
                     </a>
+                    <a href="{{ route('admin.laporan-benih.index') }}"
+                        class="block px-4 py-2 hover:bg-blue-100 rounded">
+                        Laporan Benih Ikan
+                    </a>
+                    <a href="{{ route('admin.laporan-induk.index') }}"
+                        class="block px-4 py-2 hover:bg-blue-100 rounded">
+                        Laporan Induk Ikan
+                    </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.master-benih.index') }}"
                         class="block px-4 py-2 text-green-700 hover:bg-green-100 rounded">
                         + Tambah Data Master Benih Ikan
                     </a>
+                </li>
+                <li>
                 </li>
             </ul>
         </aside>

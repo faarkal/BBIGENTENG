@@ -114,10 +114,10 @@
                                     class="absolute left-1/2 transform -translate-x-1/2 hidden group-hover:block bg-white shadow-lg rounded-xl mt-3 py-3 text-center
                                    opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-in-out
                                    w-max min-w-[12rem]">
-                                    <li><a href="{{ route('login') }}"
+                                    <li><a href="{{ route('laporan-benih') }}"
                                             class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Laporan
                                             Benih Ikan</a></li>
-                                    <li><a href="{{ route('login') }}"
+                                    <li><a href="{{ route('laporan-induk') }}"
                                             class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Laporan
                                             Induk Ikan</a></li>
                                 </ul>
@@ -173,7 +173,7 @@
                             <h3 class="text-2xl font-bold text-gray-800 mb-4">Laporan</h3>
                             <p class="text-gray-600 mb-6">Lihat data laporan produksi dan penjualan ikan secara
                                 transparan dan terperinci di sini.</p>
-                            <a href="{{ route('login') }}"
+                            <a href="{{ route('laporan-benih') }}"
                                 class="inline-block px-6 py-3 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition">Lihat</a>
                         </div>
                     </div>

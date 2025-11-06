@@ -14,6 +14,10 @@ use App\Http\Controllers\Publik\ProfilBalaiController as PublikProfilBalaiContro
 use App\Http\Controllers\Admin\BenihController;
 use App\Http\Controllers\Admin\MasterBenihController;
 use App\Http\Controllers\Admin\PemesananAdminController;
+use App\Http\Controllers\Publik\LaporanBenihController as PublikLaporanBenihController;
+use App\Http\Controllers\Admin\LaporanBenihController as AdminLaporanBenihController;
+use App\Http\Controllers\Publik\LaporanIndukController as PublikLaporanIndukController;
+use App\Http\Controllers\Admin\LaporanIndukController as AdminLaporanIndukController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +35,11 @@ Route::get('/visi-misi', [PublikVisiMisiController::class, 'index'])->name('visi
 Route::get('/pemesanan', [PemesananController::class, 'index'])->name('pemesanan.form');
 Route::post('/pemesanan', [PemesananController::class, 'store'])->name('pemesanan');
 Route::get('/profil-balai', [PublikProfilBalaiController::class, 'index'])->name('profil-balai');
+Route::get('/laporan-benih', [PublikLaporanBenihController::class, 'index'])
+    ->name('laporan-benih');
+Route::get('/laporan-induk', [PublikLaporanIndukController::class, 'index'])
+    ->name('laporan-induk');
+
 
 // Google Auth
 Route::get('/google', [GoogleAuth::class, 'redirectGoogle'])->name('google.auth');
@@ -84,6 +93,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/pemesanan', [PemesananAdminController::class, 'index'])->name('pemesanan.index');
         Route::post('/pemesanan/{id}/konfirmasi', [PemesananAdminController::class, 'konfirmasi'])->name('pemesanan.konfirmasi');
         Route::post('/pemesanan/{id}/tolak', [PemesananAdminController::class, 'tolak'])->name('pemesanan.tolak');
+
+        // Laporan Benih Ikan
+        Route::get('/laporan-benih', [AdminLaporanBenihController::class, 'index'])->name('laporan-benih.index');
+        Route::post('/laporan-benih/store', [AdminLaporanBenihController::class, 'store'])->name('laporan-benih.store');
+        Route::delete('/laporan-benih/{id}', [AdminLaporanBenihController::class, 'destroy'])->name('laporan-benih.destroy');
+
+        // Laporan Induk Ikan
+        Route::get('/laporan-induk', [AdminLaporanIndukController::class, 'index'])->name('laporan-induk.index');
+        Route::post('/laporan-induk/store', [AdminLaporanIndukController::class, 'store'])->name('laporan-induk.store');
+        Route::delete('/laporan-induk/{id}', [AdminLaporanIndukController::class, 'destroy'])->name('laporan-induk.destroy');
     });
 });
 
