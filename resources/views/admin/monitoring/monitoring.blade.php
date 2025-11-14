@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mx-auto p-6">
-    <h1 class="text-2xl font-bold text-blue-800 mb-6">Edit Monitoring Mingguan</h1>
+    <h1 class="text-2xl font-bold text-blue-800 mb-6">Monitoring Mingguan</h1>
 
     {{-- Form Monitoring --}}
     <form action="{{ route('admin.monitoring.update', $monitoring->id) }}" method="POST" class="mb-10">
@@ -72,7 +72,7 @@
         <div class="mt-6 flex items-center">
             <button type="submit"
                     class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-                💾 Simpan Perubahan
+                Simpan Perubahan
             </button>
             <a href="{{ route('admin.monitoring.index') }}"
                class="ml-3 text-gray-600 hover:underline">Batal</a>
