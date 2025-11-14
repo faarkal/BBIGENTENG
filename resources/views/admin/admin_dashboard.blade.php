@@ -53,7 +53,7 @@
                         <li><a href="{{ route('admin.monitoring.create') }}"
                                 class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Monitoring</a>
                         </li>
-                        <li><a href="{{ route('sejarah') }}"
+                        <li><a href="{{ route('admin.benih.index') }}"
                                 class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Pengelolaan
                                 Induk</a>
                         </li>
@@ -78,16 +78,16 @@
                                 class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Pelaporan
                                 Induk Ikan</a>
                         </li>
+                        <li><a href="{{ route('admin.videos.index') }}"
+                                class="block px-6 py-2 text-gray-800 hover:bg-blue-500 hover:text-white rounded-lg transition-colors">Video
+                                Aktivitas</a>
+                        </li>
                     </ul>
                 </li>
                 <li><a href="{{ url('admin/logout') }}" class="hover:text-red-400">Logout</a></li>
             </ul>
         </div>
     </nav>
-
-                    <!-- Login -->
-                    <li><a href="{{ route('admin.login') }}" class="text-white hover:text-gray-300">Logout</a></li>
-                </ul>
 
     <!-- Header Section -->
     <header class="relative h-screen bg-cover bg-center bg-no-repeat"
@@ -103,22 +103,24 @@
     </header>
 
     <!-- Dashboard Overview -->
-    <section class="py-20">
-        <div class="container mx-auto">
+    <section class="py-10">
+        <div class="container mx-auto px-6 md:px-12">
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Menu Utama</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <!-- Produksi -->
-                <div class="bg-white shadow-lg rounded-2xl text-center p-8 hover:shadow-2xl transition">
+                <div
+                    class="bg-white shadow-lg rounded-2xl text-center p-8 hover:shadow-2xl transition transform hover:-translate-y-1">
                     <i class="fa-solid fa-fish text-blue-500 text-5xl mb-4"></i>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Laporan Benih</h3>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Laporan Benih Ikan</h3>
                     <p class="text-gray-600 mb-4">Lihat dan kelola data produksi benih ikan.</p>
                     <a href="{{ url('admin/laporan-produksi') }}"
                         class="inline-block px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">Lihat</a>
                 </div>
 
                 <!-- Induk -->
-                <div class="bg-white shadow-lg rounded-2xl text-center p-8 hover:shadow-2xl transition">
+                <div
+                    class="bg-white shadow-lg rounded-2xl text-center p-8 hover:shadow-2xl transition transform hover:-translate-y-1">
                     <i class="fa-solid fa-water text-blue-500 text-5xl mb-4"></i>
                     <h3 class="text-xl font-bold text-gray-800 mb-2">Laporan Induk</h3>
                     <p class="text-gray-600 mb-4">Pantau data induk ikan dan hasil pembiakan.</p>
@@ -127,7 +129,8 @@
                 </div>
 
                 <!-- Penjualan -->
-                <div class="bg-white shadow-lg rounded-2xl text-center p-8 hover:shadow-2xl transition">
+                <div
+                    class="bg-white shadow-lg rounded-2xl text-center p-8 hover:shadow-2xl transition transform hover:-translate-y-1">
                     <i class="fa-solid fa-file-invoice-dollar text-blue-500 text-5xl mb-4"></i>
                     <h3 class="text-xl font-bold text-gray-800 mb-2">Laporan Penjualan</h3>
                     <p class="text-gray-600 mb-4">Kelola data penjualan dan nota transaksi pelanggan.</p>
@@ -137,6 +140,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer class="bg-blue-900 text-white py-10 mt-20">

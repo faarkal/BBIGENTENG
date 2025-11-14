@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mx-auto p-6">
-    <h1 class="text-2xl font-bold text-blue-800 mb-6">📦 Data Pemesanan Ikan</h1>
+    <h1 class="text-2xl font-bold text-blue-800 mb-6">📦 Data Pemesanan Benih Ikan</h1>
 
     @if(session('success'))
         <div class="bg-green-100 text-green-700 p-3 rounded mb-4">{{ session('success') }}</div>
@@ -11,7 +11,7 @@
     <table class="min-w-full bg-white border border-gray-300">
         <thead class="bg-blue-100 text-blue-900">
             <tr>
-                <th class="p-3 text-left">#</th>
+                <th class="p-3 text-left">No.</th>
                 <th class="p-3 text-left">Nama Pemesan</th>
                 <th class="p-3 text-left">Jenis Ikan</th>
                 <th class="p-3 text-left">Jumlah</th>

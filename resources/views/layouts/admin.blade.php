@@ -55,6 +55,14 @@
                 <h2 class="text-lg font-semibold text-blue-800">Menu Admin</h2>
             </div>
             <ul class="p-4 space-y-2">
+                <!-- Data Master Benih Ikan -->
+                <li class="font-bold text-gray-600 mt-2">Data Master</li>
+                <li>
+                    <a href="{{ route('admin.master-benih.index') }}"
+                        class="block px-4 py-2 text-green-700 hover:bg-green-100 rounded">
+                        + Tambah Data Master Benih Ikan
+                    </a>
+                </li>
                 <!-- Tentang Balai -->
                 <li class="font-bold text-gray-600 mt-2">Tentang Balai</li>
                 <li><a href="{{ route('admin.sejarah') }}" class="block px-4 py-2 hover:bg-blue-100 rounded">Sejarah</a>
@@ -66,9 +74,18 @@
                 <!-- Pengelolaan Data -->
                 <li class="font-bold text-gray-600 mt-4">Pengelolaan Data</li>
                 <li>
+                    <a href="{{ route('admin.monitoring.create') }}" class="block px-4 py-2 hover:bg-blue-100 rounded">
+                        Monitoring
+                    </a>
                     <a href="{{ route('admin.benih.index') }}" class="block px-4 py-2 hover:bg-blue-100 rounded">
                         Pengelolaan Benih Ikan
                     </a>
+                    <a href="{{ route('admin.benih.index') }}" class="block px-4 py-2 hover:bg-blue-100 rounded">
+                        Pengelolaan Induk Ikan
+                    </a>
+                </li>
+                <li class="font-bold text-gray-600 mt-4"> Pelaporan</li>
+                <li>
                     <a href="{{ route('admin.laporan-benih.index') }}"
                         class="block px-4 py-2 hover:bg-blue-100 rounded">
                         Laporan Benih Ikan
@@ -78,10 +95,10 @@
                         Laporan Induk Ikan
                     </a>
                 </li>
+                <li class="font-bold text-gray-600 mt-4"> Pemesanan</li>
                 <li>
-                    <a href="{{ route('admin.master-benih.index') }}"
-                        class="block px-4 py-2 text-green-700 hover:bg-green-100 rounded">
-                        + Tambah Data Master Benih Ikan
+                    <a href="{{ route('admin.pemesanan.index') }}" class="block px-4 py-2 hover:bg-blue-100 rounded">
+                        Pemesanan
                     </a>
                 </li>
                 <li>

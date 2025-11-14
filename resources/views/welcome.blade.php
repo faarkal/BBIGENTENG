@@ -123,9 +123,10 @@
                                 </ul>
                             </li>
 
-                    <!-- Login -->
-                     <li><a href="{{ route('admin.login') }}" class="text-white hover:text-gray-300">Login</a></li>
-                </ul>
+                            <!-- Login -->
+                            <li><a href="{{ route('admin.login') }}" class="text-white hover:text-gray-300">Login</a>
+                            </li>
+                        </ul>
                         </ul>
                     </div>
                 </div>
@@ -198,25 +199,25 @@
         </section>
 
         <!-- Laporan Aktivitas -->
-        <section id="laporan-aktivitas" class="py-20 bg-gray-100">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Laporan Aktivitas</h2>
-                <p class="text-gray-600 mb-12">Laporan aktivitas Balai Usaha Perikanan Genteng</p>
+        <section class="py-10 bg-gray-100">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Video Aktivitas</h2>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    @for ($i = 1; $i <= 3; $i++)
-                        <div class="relative rounded-2xl overflow-hidden group">
-                            <div class="h-64 bg-cover bg-center" style="background-image: url('images/img_1.jpg');">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    @foreach (\App\Models\Video::latest()->take(3)->get() as $video)
+                        <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+                            <video controls class="w-full h-64 object-cover">
+                                <source src="{{ asset('storage/' . $video->file_path) }}" type="video/mp4">
+                                Browser kamu tidak mendukung pemutaran video.
+                            </video>
+                            <div class="p-4">
+                                <h3 class="font-semibold text-lg text-gray-800">{{ $video->judul }}</h3>
+                                @if ($video->deskripsi)
+                                    <p class="text-gray-600 mt-2">{{ $video->deskripsi }}</p>
+                                @endif
                             </div>
-                            <div
-                                class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-70 transition-all duration-500">
-                            </div>
-                            <a href="https://youtu.be/WwjUKHnWCTI?si=4hNH8UhsnnQUVmzZ" target="_blank"
-                                class="absolute inset-0 flex items-center justify-center text-white text-5xl transform transition-transform duration-300 group-hover:scale-125">
-                                <i class="fa-solid fa-play"></i>
-                            </a>
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
             </div>
         </section>
