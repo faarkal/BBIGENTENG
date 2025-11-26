@@ -82,6 +82,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('/monitoring/{id}', [MonitoringController::class, 'update'])->name('monitoring.update');
         Route::delete('/monitoring/{id}', [MonitoringController::class, 'destroy'])->name('monitoring.destroy');
 
+
         // Pemesanan
         Route::get('/pemesanan', [PemesananAdminController::class, 'index'])->name('pemesanan.index');
         Route::post('/pemesanan/{id}/konfirmasi', [PemesananAdminController::class, 'konfirmasi'])->name('pemesanan.konfirmasi');
@@ -91,6 +92,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/laporan-benih', [AdminLaporanBenihController::class, 'index'])->name('laporan-benih.index');
         Route::post('/laporan-benih/store', [AdminLaporanBenihController::class, 'store'])->name('laporan-benih.store');
         Route::delete('/laporan-benih/{id}', [AdminLaporanBenihController::class, 'destroy'])->name('laporan-benih.destroy');
+
+        // Laporan Akhir (Bulanan)
+        Route::get('/laporan-akhir', [\App\Http\Controllers\Admin\LaporanAkhirController::class, 'index'])->name('laporan-akhir.index');
 
         // Laporan Induk
         Route::get('/laporan-induk', [AdminLaporanIndukController::class, 'index'])->name('laporan-induk.index');

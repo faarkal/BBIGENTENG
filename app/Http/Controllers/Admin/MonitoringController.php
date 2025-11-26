@@ -37,6 +37,8 @@ class MonitoringController extends Controller
     /**
      * Simpan data monitoring baru
      */
+
+// ...existing code...
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -49,34 +51,69 @@ class MonitoringController extends Controller
         // Jika tanggal kosong, isi otomatis hari ini
         $data['tanggal'] = $data['tanggal'] ?? now()->toDateString();
 
-        Monitoring::create($data);
+        // Simpan dan ambil ID dari record yang baru dibuat
+        $monitoring = Monitoring::create($data);
 
-        return redirect()->route('admin.monitoring.index')
+        return redirect()->route('admin.monitoring.monitoring', $monitoring->id)
             ->with('success', 'Data monitoring berhasil disimpan!');
     }
+// ...existing code...
 
     /**
      * Tampilkan form monitoring mingguan + hasil monitoring
      */
-    public function monitoring($id)
+    public function monitoring(Request $request, $id)
 {
     $monitoring = Monitoring::findOrFail($id);
     $jenisIkan = MasterBenih::select('id', 'jenis_ikan')
         ->orderBy('jenis_ikan', 'asc')
         ->get();
 
-    // 🔹 Ambil semua hasil monitoring berdasarkan kolam yang sama
-    $mingguan = Monitoring::where('kolam', $monitoring->kolam)
-        ->orderBy('tanggal', 'desc')
-        ->get();
+    $month = $request->query('month');
+    $query = Monitoring::where('master_benih_id', $monitoring->master_benih_id);
 
-    return view('admin.monitoring.monitoring', compact('monitoring', 'jenisIkan', 'mingguan'));
+    if ($month) {
+        try {
+            $c = Carbon::createFromFormat('Y-m', $month);
+            $query->whereYear('tanggal', $c->year)
+                  ->whereMonth('tanggal', $c->month);
+        } catch (\Exception $e) {
+            // Abaikan filter jika format tanggal salah
+        }
+    } else {
+        $c = Carbon::parse($monitoring->tanggal);
+        $query->whereYear('tanggal', $c->year)
+              ->whereMonth('tanggal', $c->month);
+        $month = $c->format('Y-m');
+    }
+
+    $mingguan = $query->orderBy('tanggal', 'asc')->get();
+
+    // Perhitungan kumulatif jumlah akhir
+    $jumlah_awal = null;
+    foreach ($mingguan as $idx => $m) {
+        if ($idx === 0) {
+            $jumlah_awal = $m->bibit_awal;
+        } else {
+            $jumlah_awal = $mingguan[$idx-1]->jumlah_akhir;
+        }
+        $m->jumlah_akhir = $jumlah_awal - ($m->kematian_bibit ?? 0);
+    }
+
+    return view('admin.monitoring.monitoring', [
+        'monitoring' => $monitoring,
+        'jenisIkan' => $jenisIkan,
+        'mingguan' => $mingguan,
+        'selectedMonth' => $month,
+    ]);
 }
 
-public function update(Request $request, $id)
-{
-    $monitoring = Monitoring::findOrFail($id);
 
+    /**
+     * Simpan perubahan data monitoring (edit record yang ada)
+     */
+   public function update(Request $request, $id)
+{
     $data = $request->validate([
         'tanggal' => 'required|date',
         'master_benih_id' => 'required|exists:master_benihs,id',
@@ -86,19 +123,13 @@ public function update(Request $request, $id)
         'kematian_bibit' => 'nullable|integer|min:0',
     ]);
 
+    $monitoring = Monitoring::findOrFail($id);
+
+    $data['jumlah_akhir'] = ($data['bibit_awal'] ?? 0) - ($data['kematian_bibit'] ?? 0);
+
     $monitoring->update($data);
-    $monitoring->refresh();
 
-    $jenisIkan = MasterBenih::select('id', 'jenis_ikan')
-        ->orderBy('jenis_ikan', 'asc')
-        ->get();
-
-    // 🔹 Ambil semua hasil monitoring berdasarkan kolam yang sama
-    $mingguan = Monitoring::where('kolam', $monitoring->kolam)
-        ->orderBy('tanggal', 'desc')
-        ->get();
-
-    return view('admin.monitoring.monitoring', compact('monitoring', 'jenisIkan', 'mingguan'))
+    return redirect()->route('admin.monitoring.monitoring', $monitoring->id)
         ->with('success', 'Data monitoring berhasil diperbarui!');
 }
 
@@ -114,4 +145,6 @@ public function update(Request $request, $id)
         return redirect()->route('admin.monitoring.index')
             ->with('success', 'Data monitoring berhasil dihapus!');
     }
+
 }
+

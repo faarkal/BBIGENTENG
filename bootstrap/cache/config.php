@@ -109,13 +109,13 @@
   array (
     'paths' => 
     array (
-      0 => 'D:\\laragon\\www\\PBL S5\\BBIGENTENG\\resources\\views',
+      0 => 'C:\\xampp\\htdocs\\projectpbls4\\BBIGENTENG\\resources\\views',
     ),
-    'compiled' => 'D:\\laragon\\www\\PBL S5\\BBIGENTENG\\storage\\framework\\views',
+    'compiled' => 'C:\\xampp\\htdocs\\projectpbls4\\BBIGENTENG\\storage\\framework\\views',
   ),
   'app' => 
   array (
-    'name' => 'Laravel',
+    'name' => 'Easy',
     'env' => 'local',
     'debug' => true,
     'url' => 'http://localhost',
@@ -126,7 +126,7 @@
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
     'cipher' => 'AES-256-CBC',
-    'key' => 'base64:7eZXh4zXjaY6Y+IZsFxQyJlXQxWJlHexUmraeupQ+gg=',
+    'key' => 'base64:vWowNEWh3BDHQGvg8Woz15zJognZsFGKhrLM9BkAtyo=',
     'previous_keys' => 
     array (
     ),
@@ -278,8 +278,8 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'D:\\laragon\\www\\PBL S5\\BBIGENTENG\\storage\\framework/cache/data',
-        'lock_path' => 'D:\\laragon\\www\\PBL S5\\BBIGENTENG\\storage\\framework/cache/data',
+        'path' => 'C:\\xampp\\htdocs\\projectpbls4\\BBIGENTENG\\storage\\framework/cache/data',
+        'lock_path' => 'C:\\xampp\\htdocs\\projectpbls4\\BBIGENTENG\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -322,17 +322,8 @@
       array (
         'driver' => 'octane',
       ),
-      'failover' => 
-      array (
-        'driver' => 'failover',
-        'stores' => 
-        array (
-          0 => 'database',
-          1 => 'array',
-        ),
-      ),
     ),
-    'prefix' => 'laravel-cache-',
+    'prefix' => 'easy-cache-',
   ),
   'database' => 
   array (
@@ -343,7 +334,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => 'bbi_genteng',
+        'database' => 'bbigen',
         'prefix' => '',
         'foreign_key_constraints' => true,
         'busy_timeout' => NULL,
@@ -357,9 +348,9 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'bbi_genteng',
+        'database' => 'bbigen',
         'username' => 'root',
-        'password' => '060704',
+        'password' => '',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -377,9 +368,9 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'bbi_genteng',
+        'database' => 'bbigen',
         'username' => 'root',
-        'password' => '060704',
+        'password' => '',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -397,9 +388,9 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'bbi_genteng',
+        'database' => 'bbigen',
         'username' => 'root',
-        'password' => '060704',
+        'password' => '',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -412,9 +403,9 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'bbi_genteng',
+        'database' => 'bbigen',
         'username' => 'root',
-        'password' => '060704',
+        'password' => '',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -431,7 +422,7 @@
       'options' => 
       array (
         'cluster' => 'redis',
-        'prefix' => 'laravel-database-',
+        'prefix' => 'easy-database-',
         'persistent' => false,
       ),
       'default' => 
@@ -470,7 +461,7 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\laragon\\www\\PBL S5\\BBIGENTENG\\storage\\app/private',
+        'root' => 'C:\\xampp\\htdocs\\projectpbls4\\BBIGENTENG\\storage\\app/private',
         'serve' => true,
         'throw' => false,
         'report' => false,
@@ -478,7 +469,7 @@
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\laragon\\www\\PBL S5\\BBIGENTENG\\storage\\app/public',
+        'root' => 'C:\\xampp\\htdocs\\projectpbls4\\BBIGENTENG\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
         'throw' => false,
@@ -500,7 +491,7 @@
     ),
     'links' => 
     array (
-      'D:\\laragon\\www\\PBL S5\\BBIGENTENG\\public\\storage' => 'D:\\laragon\\www\\PBL S5\\BBIGENTENG\\storage\\app/public',
+      'C:\\xampp\\htdocs\\projectpbls4\\BBIGENTENG\\public\\storage' => 'C:\\xampp\\htdocs\\projectpbls4\\BBIGENTENG\\storage\\app/public',
     ),
   ),
   'logging' => 
@@ -525,14 +516,14 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'D:\\laragon\\www\\PBL S5\\BBIGENTENG\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\projectpbls4\\BBIGENTENG\\storage\\logs/laravel.log',
         'level' => 'debug',
         'replace_placeholders' => true,
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'D:\\laragon\\www\\PBL S5\\BBIGENTENG\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\projectpbls4\\BBIGENTENG\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
         'replace_placeholders' => true,
@@ -597,13 +588,13 @@
       ),
       'emergency' => 
       array (
-        'path' => 'D:\\laragon\\www\\PBL S5\\BBIGENTENG\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\projectpbls4\\BBIGENTENG\\storage\\logs/laravel.log',
       ),
     ),
   ),
   'mail' => 
   array (
-    'default' => 'log',
+    'default' => 'smtp',
     'mailers' => 
     array (
       'smtp' => 
@@ -611,10 +602,10 @@
         'transport' => 'smtp',
         'scheme' => NULL,
         'url' => NULL,
-        'host' => '127.0.0.1',
+        'host' => 'sandbox.smtp.mailtrap.io',
         'port' => '2525',
-        'username' => NULL,
-        'password' => NULL,
+        'username' => 'd383c69ee8b630',
+        'password' => '1aa4c88ff83fcb',
         'timeout' => NULL,
         'local_domain' => 'localhost',
       ),
@@ -667,15 +658,15 @@
     ),
     'from' => 
     array (
-      'address' => 'hello@example.com',
-      'name' => 'Laravel',
+      'address' => 'BBI@genteng.com',
+      'name' => 'Easy',
     ),
     'markdown' => 
     array (
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'D:\\laragon\\www\\PBL S5\\BBIGENTENG\\resources\\views/vendor/mail',
+        0 => 'C:\\xampp\\htdocs\\projectpbls4\\BBIGENTENG\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -726,19 +717,6 @@
         'block_for' => NULL,
         'after_commit' => false,
       ),
-      'deferred' => 
-      array (
-        'driver' => 'deferred',
-      ),
-      'failover' => 
-      array (
-        'driver' => 'failover',
-        'connections' => 
-        array (
-          0 => 'database',
-          1 => 'deferred',
-        ),
-      ),
     ),
     'batching' => 
     array (
@@ -778,18 +756,18 @@
     ),
     'google' => 
     array (
-      'client_id' => NULL,
-      'client_secret' => NULL,
+      'client_id' => '567696995164-gs298hrrmk0okrfhrbm5ssmhcbq8r80k.apps.googleusercontent.com',
+      'client_secret' => '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',
       'redirect' => NULL,
     ),
   ),
   'session' => 
   array (
-    'driver' => 'file',
+    'driver' => 'database',
     'lifetime' => 120,
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'D:\\laragon\\www\\PBL S5\\BBIGENTENG\\storage\\framework/sessions',
+    'files' => 'C:\\xampp\\htdocs\\projectpbls4\\BBIGENTENG\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -798,7 +776,7 @@
       0 => 2,
       1 => 100,
     ),
-    'cookie' => 'laravel-session',
+    'cookie' => 'easy-session',
     'path' => '/',
     'domain' => NULL,
     'secure' => NULL,
