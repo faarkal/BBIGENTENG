@@ -4,13 +4,24 @@
 <div class="container mt-4 px-6">
     <h4 class="text-xl font-semibold mb-4">LAPORAN BULANAN PRODUKSI BENIH IKAN</h4>
 
-    <form method="GET" action="{{ route('admin.laporan-akhir.index') }}" class="mb-4">
-        <div class="mb-3 max-w-xs">
+     <form method="GET" action="{{ route('admin.laporan-akhir.index') }}" class="mb-4 flex gap-3 items-end">
+        <div class="flex-1 max-w-xs">
             <label class="block font-medium mb-1">Pilih Bulan:</label>
             <select name="bulan" class="border rounded p-2 w-full" onchange="this.form.submit()">
                 @foreach($bulanList as $key => $bulan)
                     <option value="{{ $key }}" {{ $bulanDipilih == $key ? 'selected' : '' }}>
                         {{ $bulan }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="flex-1 max-w-xs">
+            <label class="block font-medium mb-1">Pilih Tahun:</label>
+            <select name="tahun" class="border rounded p-2 w-full" onchange="this.form.submit()">
+                @foreach($tahunList as $key => $tahun)
+                    <option value="{{ $key }}" {{ $tahunDipilih == $key ? 'selected' : '' }}>
+                        {{ $tahun }}
                     </option>
                 @endforeach
             </select>

@@ -12,35 +12,64 @@ class LaporanAkhirController extends Controller
 {
     public function index(Request $request)
     {
-        $bulanDipilih = $request->query('bulan', Carbon::now()->format('Y-m'));
+        // Ambil bulan & tahun terpisah dari query
+        $bulanDipilih = $request->query('bulan', (int) Carbon::now()->format('m'));
+        $tahunDipilih = $request->query('tahun', (int) Carbon::now()->format('Y'));
 
+        // Validasi bulan (1-12) dan tahun
+        if ($bulanDipilih < 1 || $bulanDipilih > 12) {
+            $bulanDipilih = (int) Carbon::now()->format('m');
+        }
+        if ($tahunDipilih < 2020 || $tahunDipilih > (int) Carbon::now()->format('Y')) {
+            $tahunDipilih = (int) Carbon::now()->format('Y');
+        }
+
+        // Buat rentang tanggal dari bulan & tahun
         try {
-            $start = Carbon::createFromFormat('Y-m', $bulanDipilih)->startOfMonth()->toDateString();
-            $end = Carbon::createFromFormat('Y-m', $bulanDipilih)->endOfMonth()->toDateString();
+            $start = Carbon::createFromDate($tahunDipilih, $bulanDipilih, 1)->startOfMonth()->toDateString();
+            $end = Carbon::createFromDate($tahunDipilih, $bulanDipilih, 1)->endOfMonth()->toDateString();
         } catch (\Exception $e) {
             $start = Carbon::now()->startOfMonth()->toDateString();
             $end = Carbon::now()->endOfMonth()->toDateString();
-            $bulanDipilih = Carbon::now()->format('Y-m');
+            $bulanDipilih = (int) Carbon::now()->format('m');
+            $tahunDipilih = (int) Carbon::now()->format('Y');
         }
 
-        // daftar 12 bulan terakhir
-        $bulanList = [];
-        for ($i = 0; $i < 12; $i++) {
-            $m = Carbon::now()->subMonths($i);
-            $bulanList[$m->format('Y-m')] = $m->format('F Y');
+        // Daftar bulan (1-12)
+        $bulanList = [
+            1 => 'Januari',
+            2 => 'Februari',
+            3 => 'Maret',
+            4 => 'April',
+            5 => 'Mei',
+            6 => 'Juni',
+            7 => 'Juli',
+            8 => 'Agustus',
+            9 => 'September',
+            10 => 'Oktober',
+            11 => 'November',
+            12 => 'Desember',
+        ];
+
+        // Daftar tahun (10 tahun terakhir sampai sekarang)
+        $tahunList = [];
+        $tahunSekarang = (int) Carbon::now()->format('Y');
+        for ($i = 0; $i < 10; $i++) {
+            $t = $tahunSekarang - $i;
+            $tahunList[$t] = $t;
         }
-        $bulanList = array_reverse($bulanList, true);
+        $tahunList = array_reverse($tahunList, true);
 
         // Ambil semua MasterBenih
         $masterBenih = MasterBenih::orderBy('jenis_ikan')->get();
 
-        // Ambil monitoring di rentang bulan dan group berdasarkan master_benih_id
+        // Ambil monitoring di rentang bulan & tahun
         $monitorings = Monitoring::whereBetween('tanggal', [$start, $end])
             ->orderBy('tanggal')
             ->get()
             ->groupBy('master_benih_id');
 
-        // Siapkan koleksi produksi: setiap MasterBenih diberi property monitoring (koleksi)
+        // Siapkan koleksi produksi
         $produksi = $masterBenih->map(function ($item) use ($monitorings) {
             $mList = $monitorings->get($item->id, collect());
 
@@ -99,7 +128,9 @@ class LaporanAkhirController extends Controller
         return view('admin.laporan-akhir.index', [
             'produksi' => $produksi,
             'bulanList' => $bulanList,
+            'tahunList' => $tahunList,
             'bulanDipilih' => $bulanDipilih,
+            'tahunDipilih' => $tahunDipilih,
         ]);
     }
 }
