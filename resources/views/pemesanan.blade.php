@@ -86,11 +86,17 @@
                 <label for="jenis_bibit" class="block font-semibold mb-2">Jenis Ikan</label>
                 <select id="jenis_bibit" name="jenis_bibit" required class="w-full border rounded-lg px-4 py-2">
                     <option value="">-- Pilih Jenis Ikan --</option>
-                    <option value="Nila Gift">Nila Gift</option>
-                    <option value="Nila Hitam">Nila Hitam</option>
-                    <option value="Gurame">Gurame</option>
-                    <option value="Tombro">Tombro</option>
-                    <option value="Koi">Koi</option>
+                    @if(isset($masterBenih) && $masterBenih->count())
+                        @foreach($masterBenih as $mb)
+                            <option value="{{ $mb->jenis_ikan }}">{{ $mb->jenis_ikan }}</option>
+                        @endforeach
+                    @else
+                        <option value="Nila Gift">Nila Gift</option>
+                        <option value="Nila Hitam">Nila Hitam</option>
+                        <option value="Gurame">Gurame</option>
+                        <option value="Tombro">Tombro</option>
+                        <option value="Koi">Koi</option>
+                    @endif
                 </select>
             </div>
 
@@ -142,13 +148,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        const hargaIkan = {
-            "Nila Gift": 15000,
-            "Nila Hitam": 12000,
-            "Gurame": 25000,
-            "Tombro": 18000,
-            "Koi": 50000
-        };
+        // Build hargaIkan mapping from master data passed from controller.
+        const hargaIkan = {!! isset($masterBenih) ? json_encode($masterBenih->pluck('harga_perekor', 'jenis_ikan')) : json_encode(["Nila Gift"=>100, "Nila Hitam"=>1500, "Gurame"=>2500, "Tombro"=>3000, "Koi"=>500]) !!};
 
         const jenisBibit = document.getElementById("jenis_bibit");
         const jumlahIkan = document.getElementById("jumlahIkan");
@@ -175,7 +176,7 @@
             const ikan = jenisBibit.value;
             const jumlah = jumlahIkan.value;
             const total = totalHarga.value;
-            const nomorWA = "6281237878334";
+            const nomorWA = "6285648723506";
 
             const pesan =
                 `Halo, saya ingin memesan ikan:\n\n👤 Nama: ${nama}\n📞 No. Telp: ${telp}\n🐟 Jenis Ikan: ${ikan}\n🔢 Jumlah: ${jumlah}\n💰 Total: ${total}\n\nMohon konfirmasinya.`;
