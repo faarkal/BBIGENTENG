@@ -101,7 +101,7 @@
             </div>
 
             <div>
-                <label for="namaPemesan" class="block font-semibold mb-2">Nama Pemesan</label>
+                <label for="namaPemesan" class="block font-semibold mb-2">Nama Pemesanan</label>
                 <input type="text" id="namaPemesan" name="nama_pemesan" required
                     class="w-full border rounded-lg px-4 py-2">
             </div>
